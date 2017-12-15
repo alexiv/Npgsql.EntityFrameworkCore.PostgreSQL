@@ -43,7 +43,7 @@ Below are some Npgsql-specific translations, many additional standard ones are s
 | This C# expression...                                    | ... gets translated to this SQL |
 |----------------------------------------------------------|---------------------------------|
 | .Where(c => Regex.IsMatch(c.Name, "^A+")                 | [WHERE "c"."Name" ~ '^A+'](http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP)
-| .Where(c => c.SomeArray[1] = "foo")                      | [WHERE "c"."SomeArray"[1] = 'foo'](https://www.postgresql.org/docs/current/static/arrays.html#ARRAYS-ACCESSING)
+| .Where(c => c.SomeArray[1] == "foo")                      | [WHERE "c"."SomeArray"[1] == 'foo'](https://www.postgresql.org/docs/current/static/arrays.html#ARRAYS-ACCESSING)
 | .Where(c => c.SomeArray.SequenceEqual(new[] { 1, 2, 3 }) | [WHERE "c"."SomeArray" = ARRAY[1, 2, 3])](https://www.postgresql.org/docs/current/static/arrays.html)
 | .Where(c => c.SomeArray.Contains(3))                     | [WHERE 3 = ANY("c"."SomeArray")](https://www.postgresql.org/docs/current/static/functions-comparisons.html#AEN21104)
 | .Where(c => c.SomeArray.Length == 3)                     | [WHERE array_length("c"."SomeArray, 1) == 3](https://www.postgresql.org/docs/current/static/functions-array.html#ARRAY-FUNCTIONS-TABLE)
